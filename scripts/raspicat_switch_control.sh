@@ -47,7 +47,7 @@ raspicat_navigation () {
   check_led_status 1
   if [ $switch_status = 0 -a $led_status = 0 ]; then
     echo start_raspicat_navigation
-    roslaunch raspicat_navigation raspicat_bringup.launch &
+    roslaunch raspicat_navigation raspicat_navigation_bringup.launch &
     raspicat_navigation_pid=$!
     led_on 1
     sleep 3
