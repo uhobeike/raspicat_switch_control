@@ -1,0 +1,14 @@
+[Unit]
+Description=Raspicat-switch-control
+After=
+Requires=
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=/bin/bash -l -c '/home/ubuntu/raspicat_switch_control.sh'
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
