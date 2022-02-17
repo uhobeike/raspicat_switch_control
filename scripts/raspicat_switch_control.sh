@@ -42,40 +42,40 @@ check_led_status () {
   led_status=$[led_$1]
 }
 
-button1 () {
+SW1 () {
   check_switch_status 0
   check_led_status 1
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    . button1.sh on
+    . SW1.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    . button1.sh off
+    . SW1.sh off
   fi
 }
 
-button2 () {
+SW2 () {
   check_switch_status 1
   check_led_status 2
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    . button2.sh on
+    . SW2.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    . button2.sh off
+    . SW2.sh off
   fi
 }
 
-button3 () {
+SW3 () {
   check_switch_status 2
   check_led_status 3
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    . button3.sh on
+    . SW3.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    . button3.sh off
+    . SW3.sh off
   fi
 }
 
 raspicat_switch_control () {
-  button1
-  button2
-  button3
+  SW1
+  SW2
+  SW3
 }
 
 check_ros_process () {
