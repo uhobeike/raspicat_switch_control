@@ -2,7 +2,7 @@
 
 # waypoint_navigation_start
 
-# When the button is on
+# When the switch is on
 if [ $1 -eq "on" ]; then
   echo start_waypoint_navigation
   rostopic pub -1 /goal_command std_msgs/String go
@@ -11,7 +11,7 @@ if [ $1 -eq "on" ]; then
 fi
 #######################
 
-# When the button is off
+# When the switch is off
 if [ $1 -eq "off" ]; then
   echo start_waypoint_navigation
   rostopic pub -1 /goal_command std_msgs/String go
