@@ -2,7 +2,7 @@
 
 # rosbag_record
 
-# When the button is on
+# When the switch is on
 if [ $1 -eq "on" ]; then
   echo start_rosbag_record
   mkdir -p /mnt/ssd/rosbag/
@@ -13,7 +13,7 @@ if [ $1 -eq "on" ]; then
 fi
 #######################
 
-# When the button is off
+# When the switch is off
 if [ $1 -eq "off" ]; then
   echo finish_rosbag_record
   kill $rosbag_record_pid
