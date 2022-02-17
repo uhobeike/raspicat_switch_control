@@ -42,63 +42,40 @@ check_led_status () {
   led_status=$[led_$1]
 }
 
-raspicat_navigation () {
+button1 () {
   check_switch_status 0
   check_led_status 1
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    echo start_raspicat_navigation
-    roslaunch raspicat_navigation raspicat_bringup_navigation.launch &
-    raspicat_navigation_pid=$!
-    led_on 1
-    sleep 3
+    . button1.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    echo finish_raspicat_navigation
-    kill $raspicat_navigation_pid
-    led_off 1
-    sleep 3
+    . button1.sh off
   fi
 }
 
-waypoint_navigation () {
+button2 () {
   check_switch_status 1
   check_led_status 2
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    echo start_waypoint_navigation
-    rostopic pub -1 /goal_command std_msgs/String go
-    led_on 2
-    sleep 2
+    . button2.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    echo start_waypoint_navigation
-    rostopic pub -1 /goal_command std_msgs/String go
-    led_off 2
-    sleep 2
+    . button2.sh off
   fi
 }
 
-rosbag () {
+button3 () {
   check_switch_status 2
   check_led_status 3
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    echo start_rosbag_record
-    mkdir -p /mnt/ssd/rosbag/
-    rosrun rosbag record -a -o /mnt/ssd/rosbag/navigation &
-    rosbag_record_pid=$!
-    led_on 3
-    sleep 3
+    . button3.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    echo finish_rosbag_record
-    kill $rosbag_record_pid
-    led_off 3
-    sleep 3
+    . button3.sh off
   fi
 }
 
 raspicat_switch_control () {
-  raspicat_navigation
-  waypoint_navigation
-  rosbag
-  # gamepad_control
-  # restart
+  button1
+  button2
+  button3
 }
 
 check_ros_process () {
