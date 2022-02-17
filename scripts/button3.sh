@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# rosbag_record
+
 # When the button is on
 if [ $1 -eq "on" ]; then
   echo start_rosbag_record

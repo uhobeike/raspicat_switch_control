@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# waypoint_navigation_start
+
 # When the button is on
 if [ $1 -eq "on" ]; then
   echo start_waypoint_navigation

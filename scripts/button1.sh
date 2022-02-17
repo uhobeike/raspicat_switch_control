@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# raspicat_navigation
+
 # When the button is on
 if [ $1 -eq "on" ]; then
   echo start_raspicat_navigation
